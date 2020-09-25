@@ -25,7 +25,8 @@ class Code
 {
 private:
 	int size, range;
-	vector<int> secretCode, secretCopy, guessCopy;
+	vector<int> secretCode, secretCopy;
+	vector<int> guessCopy;
 
 public:
 	// Constructor
