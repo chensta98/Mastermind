@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="code.h" />
+    <ClInclude Include="response.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mastermind.cpp" />

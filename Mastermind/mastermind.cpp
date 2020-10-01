@@ -14,6 +14,7 @@ User recieves 10 guesses, if solution found by then (win), if not (lose)
 */
 
 #include "code.h"
+#include "response.h"
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
@@ -43,6 +44,23 @@ int main() {
 
 	for (int j = 0; j < n; j++)
 		cout << codeToGuess[j] << " ";
+
+	cout << endl;
+
+	// TESTING RESPONSE CLASS
+	response test1(1, 2);
+	response test2(1, 2);
+	response test4(4, 6);
+
+	test4.setCorrect(5);
+	test4.setIncorrect(5);
+
+	cout << test4;
+	if (test1 == test2)
+	{
+		cout << "== operator works";
+	}
+	// DONE TESTING RESPONSE CLASS
 
 	while (guesses < 10)
 	{
