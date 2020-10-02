@@ -15,6 +15,7 @@ User recieves 10 guesses, if solution found by then (win), if not (lose)
 
 #include "code.h"
 #include "response.h"
+#include "mastermind.h"
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
@@ -24,9 +25,7 @@ using namespace std;
 
 int main() {
 	//variable declarations
-	int n, m, guesses = 0, guessCodeDigit, totalCorrect, totalIncorrect;
-	vector<int> codeToGuess;
-	vector<int> guessCode;
+	int n, m;
 
 	//user input for range and length of code
 	cout << "\nPlease enter the desired length of the secret code: ";
@@ -35,60 +34,9 @@ int main() {
 	cin >> m;
 
 	//creating object secretCode of Code class
-	Code secretCode = Code(n, m);
-	//creates the secret code
-	codeToGuess = secretCode.create();
+	mastermind codeBreaker = mastermind(n, m);
 
-	//print out per 1a instructions
-	cout << "Secret Code: ";
-
-	for (int j = 0; j < n; j++)
-		cout << codeToGuess[j] << " ";
-
-	cout << endl;
-
-	// TESTING RESPONSE CLASS
-	response test1(1, 2);
-	response test2(1, 2);
-	response test4(4, 6);
-
-	test4.setCorrect(5);
-	test4.setIncorrect(5);
-
-	cout << test4;
-	if (test1 == test2)
-	{
-		cout << "== operator works";
-	}
-	// DONE TESTING RESPONSE CLASS
-
-	while (guesses < 10)
-	{
-		//user enters guess code, one digit at a time. .push_back each digit
-		cout << "\nPlease enter your guess code: " << endl;
-		for (int i = 0; i < n; i++)
-		{
-			cin >> guessCodeDigit;
-			guessCode.push_back(guessCodeDigit);
-		}
-
-		//calls checkCorrect and checkIncorrect functions in class Code
-		totalCorrect = secretCode.checkCorrect(guessCode);
-		totalIncorrect = secretCode.checkIncorrect(guessCode);
-
-		//print out result of guess
-		cout << totalCorrect << ", " << totalIncorrect;
-
-		//check if there is user win, break if so
-		if (totalCorrect == n) {
-			cout << "\nCongratulations, you guessed the correct code!\n";
-			break;
-		}
-		//increment guesses
-		guesses++;
-		//clear previous guess vector
-		guessCode.clear();
-	}
-
+	codeBreaker.playGame();
+	
 	return 0;
 }
