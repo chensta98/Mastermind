@@ -36,6 +36,12 @@ public:
 		range = m;
 	}
 
+	Code()
+	{
+		size = 0;
+		range = 0;
+	}
+
 	// Public Member Functions
 	vector<int> create();
 	int checkCorrect(vector<int> guess);
