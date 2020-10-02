@@ -29,6 +29,12 @@ public:
 		incorrect = i;
 	}
 
+	response()
+	{
+		correct = 0;
+		incorrect = 0;
+	}
+
 	// Set and get functions for correct
 	void setCorrect(int c)
 	{
